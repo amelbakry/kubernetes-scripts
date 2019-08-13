@@ -1,15 +1,15 @@
 #!/bin/bash
 
 echo -e "\e[1m\e[39mThese Deployments do not have Application in the Labels\e[21m"
-namespaces=$(zkubectl get ns | awk {'print $1'} | grep -v NAME)
+namespaces=$(kubectl get ns | awk {'print $1'} | grep -v NAME)
 for namespace in $namespaces
    do
         echo -e "\e[1m\e[39mNamespace: $namespace\e[21m"
-         deployments=$(zkubectl get deploy -n $namespace | awk {'print $1'} | grep -v NAME)
+         deployments=$(kubectl get deploy -n $namespace | awk {'print $1'} | grep -v NAME)
          for deploy in $deployments
             do
 
-               var=$(zkubectl get deployment -n ${namespace} --output=json ${deploy} | \
+               var=$(kubectl get deployment -n ${namespace} --output=json ${deploy} | \
                            jq -j '.metadata.labels  | to_entries | .[] | "\(.key)=\(.value),"')
                labels=${var%?}
 
