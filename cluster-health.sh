@@ -109,20 +109,3 @@ pod_with_issues
 top_mem_pods
 top_cpu_pods
 
-
-
-
-
-
-
-
-
-
-
-
-#zkubectl get pods --all-namespaces -o json  | jq -r '.items[] | select(.status.phase != "Running" or ([ .status.conditions[] | select(.type == "Ready" and .state == false) ] | length ) == 1 ) | .metadata.namespace + "/" + .metadata.name'
-
-#zkubectl get pods --all-namespaces --field-selector=status.phase!=Running
-
-#requested cores =
-#zkubectl top pods  -n pegasus | grep node-live | awk {'print $2'} | sed 's/[^0-9]*//g' | awk '{n += $1}; END{print n}'
