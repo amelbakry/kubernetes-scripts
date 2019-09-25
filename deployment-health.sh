@@ -1,8 +1,9 @@
+#!/bin/bash
+
         ######################################################################################
 	# Script to check the health status of Deployment and resources assosiated with it   #
 	# ####################################################################################
 
-#!/bin/bash
 
 # Colors
 RED='\033[0;31m'
